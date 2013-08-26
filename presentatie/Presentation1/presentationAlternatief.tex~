@@ -1,0 +1,69 @@
+\documentclass{beamer} 
+\usepackage{algorithm}
+\usepackage[noend]{algorithmic}
+\usepackage{fancybox}
+\floatname{algorithm}{Procedure}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\usepackage{wrapfig}
+
+% \usetheme[secheader]{Boadilla}
+% \usecolortheme{seahorse}
+% \usepackage[latin1]{inputenc}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate[height=7mm]{Rochester} 
+\usetheme[height=0mm]{Rochester}
+\useinnertheme{rectangles}
+\newcommand{\LINEIF}[2]{%
+    \STATE\algorithmicif\ {#1}\ \algorithmicthen\ {#2} \ %algorithmicend\ \algorithmicif%
+}
+
+
+
+
+
+\title[Tussentijde presentatie 1: Probleemstelling]
+{Tussentijdse presentatie 1: Probleemstelling}
+\author[Dries Van Daele]{Dries Van Daele}
+\institute{DTAI masterproef KULeuven}
+\date{25 oktober, 2012}
+
+
+
+\begin{document}
+
+\begin{frame}{}
+\titlepage
+\end{frame}
+
+\begin{frame}{Probleemstelling}
+Mining adverse events from healthcare data.
+  \begin{itemize}
+    \item adverse events: definitie volgens Institute for Healthcare Improvement. Schade werd toegebracht aan de pati\"{e}nt als een gevolg van de behandeling (schade toegebracht door een ontoereikende behandeling worden hier niet meegerekend).
+    \item healthcare data: medische en administratieve data uit verschillende bronnen (Oostenrijkse database + Franse database + ...)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Preparation and data pre-processing}
+  \begin{itemize}
+    \item making a selection of relations and attributes based on the test database
+    \item {\scriptsize{database $\leftrightarrow$ \ovalbox{SPARQL endpoint} $\leftrightarrow$ \ovalbox{argus} $\leftrightarrow$ \ovalbox{pavo} $\leftrightarrow$ \ovalbox{generic endpoint}}}
+    \item cleaning the actual data  (performing sanity checks,...)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Data mining}
+
+Geen validatieset $\rightarrow$ active-learning\\
+gebruik van multi-relationele technieken (i.e.: Inductive Logic Programming)
+
+\end{frame}
+
+\begin{frame}{Evaluatie}
+definitie succes?
+  \begin{itemize}
+    \item verkrijg een detectiecapaciteit gelijkwaardig aan manuele controle
+    \item ontdek nieuwe triggers voor adverse events die geldig en nuttig zijn
+  \end{itemize}
+\end{frame}
+\end{document}
