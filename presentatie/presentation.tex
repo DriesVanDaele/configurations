@@ -1,4 +1,6 @@
 \documentclass{beamer} 
+\usepackage{caption}
+ \captionsetup{font=scriptsize}
 \usepackage{algorithm}
 \usepackage{colortbl}% http://ctan.org/pkg/colortbl
 \usepackage{booktabs}
@@ -98,9 +100,8 @@ Problem: voluntary reporting records a fraction of the adverse events\vspace{3 m
 
 manual detection
 \begin{itemize}
-\item lacks consistency
-\item is limited in scope
 \item is costly
+\item is limited in scope
 \item is driven by intuition
 \end{itemize}
 data mining
@@ -113,8 +114,13 @@ data mining
 \end{frame}
 
 
-\begin{frame}{Knowledge discovery process}
+\begin{frame}{Problem description}
+Task: Apply data mining on a given database to perform the detection of adverse events
+\begin{figure}
 \includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{kdd}
+{\footnotesize \caption{http://www.kdnuggets.com/gpspubs/aimag-kdd-overview-1996-Fayyad.pdf}}
+\end{figure}
+
 \end{frame}
 
 
@@ -238,6 +244,41 @@ data mining
 \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Data Preparation}
+\begin{columns}
+\begin{column}{.3\textwidth}
+%\color{red}\rule{\linewidth}{4pt}
+\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{g2}
+
+\end{column}%
+\hfill%
+\begin{column}{.66\textwidth}
+{\tiny
+\begin{verbatim}
+@prefix diagnose: <http://www.example.org/ddo/diagnose#>.
+@prefix medical-case: <http://www.example.org/ddo/medical-case#>
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+diagnose:Diagnose a rdfs:Class.
+diagnose:diagnose-id a rdf:Property ;
+                       rdfs:domain diagnose:Diagnose ;
+                       rdfs:range xsd:Literal.
+diagnose:medical-case-id a rdf:Property ;
+                           rdfs:domain diagnose:Diagnose ;
+                           rdfs:range medical-case:Medical-Case.
+diagnose:icd-code a rdf:Property ;
+                    rdfs:domain diagnose:Diagnose ;
+                    rdfs:range xsd:Literal
+
+...
+\end{verbatim}
+}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
 \begin{frame}{Data Preparation}
 \begin{columns}
 \begin{column}{.3\textwidth}
@@ -247,11 +288,16 @@ data mining
 \end{column}%
 \hfill%
 \begin{column}{.66\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{rdb2rdf}
+{\footnotesize \caption{http://www.w3.org/2001/sw/rdb2rdf/use-cases/}}
+\end{figure}
 \end{column}%
 \end{columns}
 \end{frame}
 
-\begin{frame}{Data Preparation}
+
+\begin{frame}[fragile]{Data Preparation}
 \begin{columns}
 \begin{column}{.3\textwidth}
 %\color{red}\rule{\linewidth}{4pt}
@@ -259,9 +305,60 @@ data mining
 \end{column}%
 \hfill%
 \begin{column}{.66\textwidth}
+{\tiny
+\begin{verbatim}
+@prefix patient: <http://www.example.org/ddo/patient#>.
+@prefix heca: <http://www.agfa.com/w3c/2009/healthCare#>.
+{
+    ?patient a patient:Patient.
+} => {
+    ?patient a heca:Patient.
+}.
+
+...
+\end{verbatim}
+}
 \end{column}%
 \end{columns}
 \end{frame}
+
+
+
+
+
+
+\begin{frame}[fragile]{Data Preparation}
+\begin{columns}
+\begin{column}{.3\textwidth}
+%\color{red}\rule{\linewidth}{4pt}
+\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{g3}
+\end{column}%
+\hfill%
+\begin{column}{.66\textwidth}
+{\tiny
+\begin{verbatim}
+@prefix orgStructure: <http://www.example.org/ddo/orgStructure#>.
+@prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+{
+    _:structure
+        orgStructure:structID ?s ;
+        orgStructure:innerStructID ?is .
+} => {
+    ?is space:containedBy ?s .
+}.
+
+{
+    ?startNode space:containedBy ?middleNode .
+    ?middleNode space:containedBy ?endNode .
+} => {
+    ?startNode space:containedBy ?endNode .
+}.
+\end{verbatim}
+}
+\end{column}%
+\end{columns}
+\end{frame}
+
 
 
 \begin{frame}{Problem approach}
@@ -279,6 +376,11 @@ split problem  up AE's based on same trigger
 
 \begin{frame}{Data mining approach characteristics}
   example patient record timeline
+\end{frame}
+
+
+\begin{frame}{Conclusions}
+  some stuff
 \end{frame}
 
 

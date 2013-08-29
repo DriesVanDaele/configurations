@@ -1,0 +1,30 @@
+\frametitle{Data Preparation}
+\begin{columns}
+\begin{column}{.3\textwidth}
+%\color{red}\rule{\linewidth}{4pt}
+\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{g3}
+\end{column}%
+\hfill%
+\begin{column}{.66\textwidth}
+{\tiny
+\begin{verbatim}
+@prefix orgStructure: <http://www.example.org/ddo/orgStructure#>.
+@prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
+{
+    _:structure
+        orgStructure:structID ?s ;
+        orgStructure:innerStructID ?is .
+} => {
+    ?is space:containedBy ?s .
+}.
+
+{
+    ?startNode space:containedBy ?middleNode .
+    ?middleNode space:containedBy ?endNode .
+} => {
+    ?startNode space:containedBy ?endNode .
+}.
+\end{verbatim}
+}
+\end{column}%
+\end{columns}

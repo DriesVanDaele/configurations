@@ -21,6 +21,7 @@
      "booktabs"
      "colortbl"
      "algorithm"
+     "caption"
      "latex2e"
      "beamer10"
      "beamer")))
