@@ -1,5 +1,8 @@
 (TeX-add-style-hook "presentation"
  (lambda ()
+    (LaTeX-add-labels
+     "evidence-table"
+     "confusion-matrix-bun")
     (TeX-add-symbols
      '("LINEIF" 2)
      "headcol"
@@ -20,8 +23,11 @@
      "adjustbox"
      "booktabs"
      "colortbl"
+     "tabularx"
      "algorithm"
      "caption"
+     "multirow"
+     "upquote"
      "latex2e"
      "beamer10"
      "beamer")))

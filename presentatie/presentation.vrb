@@ -1,30 +1,25 @@
-\frametitle{Data Preparation}
-\begin{columns}
-\begin{column}{.3\textwidth}
-%\color{red}\rule{\linewidth}{4pt}
-\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{g3}
-\end{column}%
-\hfill%
-\begin{column}{.66\textwidth}
+\frametitle{Aleph usage}
+core vocabulary:
 {\tiny
 \begin{verbatim}
-@prefix orgStructure: <http://www.example.org/ddo/orgStructure#>.
-@prefix space: <http://eulersharp.sourceforge.net/2003/03swap/space#>.
-{
-    _:structure
-        orgStructure:structID ?s ;
-        orgStructure:innerStructID ?is .
-} => {
-    ?is space:containedBy ?s .
-}.
-
-{
-    ?startNode space:containedBy ?middleNode .
-    ?middleNode space:containedBy ?endNode .
-} => {
-    ?startNode space:containedBy ?endNode .
-}.
+patient_disorder(Patient_Id, ICD_Uri, DateTime).
+patient_drug(Patient_Id, ATC_Uri, DateTime).
+patient_age_at_date(Patient_Id, DateTime, Age_Interval).
+patient_gender(Patient_Id, Gender).
+patient_birth_date(Patient_Id, Birth_Date).
+patient_death_date(Patient_Id, Death_Date).
+patient_transfer_data(Patient_Id, From_Location, To_Location, DateTime).
+icd_class_in_icd_superclass(ICD_Class, ICD_Superclass).
+atc_uri_in_atc_category(ATC_Uri, ATC_Category).
 \end{verbatim}
 }
-\end{column}%
-\end{columns}
+space of legal clauses is constrained using
+\begin{itemize}
+\item user-defined prune statements
+\item integrity constraints
+\end{itemize}
+acceptable clauses need to
+\begin{itemize}
+  \item cover at least 2 positive examples
+  \item have a precision of at least 60\%
+\end{itemize}

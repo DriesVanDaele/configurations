@@ -1,7 +1,10 @@
 \documentclass{beamer} 
+\usepackage{upquote}
+\usepackage{multirow}
 \usepackage{caption}
  \captionsetup{font=scriptsize}
 \usepackage{algorithm}
+\usepackage{tabularx}
 \usepackage{colortbl}% http://ctan.org/pkg/colortbl
 \usepackage{booktabs}
 \usepackage{adjustbox}
@@ -115,7 +118,7 @@ data mining
 
 
 \begin{frame}{Problem description}
-Task: Apply data mining on a given database to perform the detection of adverse events
+Task: Apply data mining on a given database to detect adverse events or discover novel adverse event triggers
 \begin{figure}
 \includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{kdd}
 {\footnotesize \caption{http://www.kdnuggets.com/gpspubs/aimag-kdd-overview-1996-Fayyad.pdf}}
@@ -184,7 +187,7 @@ Task: Apply data mining on a given database to perform the detection of adverse 
   \topline
   \headcol patient\_id & birth\_date & gender \\
   \midline
-  patient\_1 & 12-AUG-1956 & M \\
+  patient\_1 & 07-MAR-1965 & M \\
   \ldots & \ldots & \ldots \\
   \bottomlinec
 \end{tabular}
@@ -196,14 +199,15 @@ Task: Apply data mining on a given database to perform the detection of adverse 
   %   \hline
   % \end{tabular}
 
+\vspace{.3cm}
 
 \adjustbox{max width=\textwidth}{
 \begin{tabular}{llll}
   \topline
   \headcol medical\_case\_id  & patient\_id & admission\_date & discharge\_date \\
   \midline
-    medical\_case\_100 & patient\_1  & 17-JAN-2009    & 19-JAN-2009    \\
-    medical\_case\_101 & patient\_1  & 03-SEP-2009    & 27-SEP-2009    \\
+    medical\_case\_100 & patient\_1  & 12-JUL-2007    & 28-JUL-2007    \\
+    medical\_case\_101 & patient\_1  & 03-FEB-2008    & 06-FEB-2008    \\
     \ldots & \ldots  & \ldots    & \ldots    \\
   \bottomlinec
 \end{tabular}
@@ -217,13 +221,14 @@ Task: Apply data mining on a given database to perform the detection of adverse 
   %   \ldots & \ldots  & \ldots    & \ldots    \\
   %   \hline
   % \end{tabular}}
+\vspace{.3cm}
 
 \begin{tabular}{lll}
   \topline
   \headcol     diagnose\_id & medical\_case\_id  & ICD\_code \\
   \midline
-    diagnose\_1  & medical\_case\_101 & F48      \\
-    diagnose\_2  & medical\_case\_101 & T85.4    \\
+    diagnose\_1  & medical\_case\_101 & J01      \\
+    diagnose\_2  & medical\_case\_101 & N18    \\
     \ldots  & \ldots & \ldots   \\
   \bottomlinec
 \end{tabular}
@@ -353,36 +358,189 @@ diagnose:icd-code a rdf:Property ;
 } => {
     ?startNode space:containedBy ?endNode .
 }.
+
+...
 \end{verbatim}
 }
 \end{column}%
 \end{columns}
 \end{frame}
 
+\begin{frame}{Data Preparation}
+\begin{columns}
+\begin{column}{.3\textwidth}
+%\color{red}\rule{\linewidth}{4pt}
+\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{prologkb}
+\end{column}%
+\hfill%
+\begin{column}{.66\textwidth}
+  \begin{itemize}
+  \item include ATC and ICD hierarchy
+  \item add ad hoc predicates (e.g. discretise age, distinguish acute from chronic disorders)
+  \item final theory $\approx 43,000,000$ clauses
+  \end{itemize}
+\end{column}%
+\end{columns}
 
-
-\begin{frame}{Problem approach}
-split problem  up AE's based on same trigger
 \end{frame}
 
-\begin{frame}{Data mining approach characteristics}
+\begin{frame}[fragile]{Data mining approach}
+ \begin{minipage}{\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth,keepaspectratio]{timeline_final2}
+\end{figure}
+  \end{minipage}
+  \vfill
+  \begin{minipage}{\textwidth}
+    \centering
+{\tiny
+\begin{verbatim}
+patient_gender(patient_1, male).
+patient_birth_date(patient_1, '1965-03-07').
+patient_medical_case_dates(patient_1, medical_case_100, '2007-07-12','2007-07-28').
+patient_disorder(patient_1, 'I20.9', '2007-07-12').
+patient_disorder(patient_1, 'I65.2', '2007-07-12').
+patient_disorder(patient_1, 'K76.9', '2007-07-17').
+patient_disorder(patient_1, 'N18', '2007-07-19').
+patient_drug(patient_1, 'B01AC04', '2007-07-12').
+...
+\end{verbatim}
+}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Data mining approach}
+
+
+ \begin{minipage}{\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth,keepaspectratio]{timeline_final2}
+\end{figure}
+  \end{minipage}
+  \vfill
+  \begin{minipage}{\textwidth}
+\begin{itemize}
+\item detect adverse events given a particular treatment/trigger \pause
+\item no labelled data \pause
+\item reverse machine learning to target relevant patterns \pause
+\item induce generally applicable rules from patient data
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Collecting evidence}
+\begin{table}[!ht]  
+\includegraphics[width=\textwidth,height=.88\textheight,keepaspectratio]{plot_drug_prescriptions}
+\end{table}
+\end{frame}
+
+\begin{frame}{Collecting evidence}
+\begin{table}[!ht]  
+  \centering
+  \begin{tabularx}{\textwidth}{| l | l | X |}
+    \cline{2-3}
+    \multicolumn{1}{l|}{} 
+    & positive examples & negative examples \\ \hline
+    BUN$>$60 mg/dl & 531 & 1477 \\
+    readm. within 30 days & 37058 & 222388 \\ 
+    Agopton & 141 & 141 \\
+    Marcoumar & 166 & 166 \\
+    Nexium & 224 & 224 \\
+    Plavix & 174 & 174 \\
+    Trental & 80 & 80 \\
+    Urosin & 121 & 121 \\ \hline
+  \end{tabularx}
+\caption {Target attribute characteristics}
+  \label{evidence-table}
+\end{table}
+\end{frame}
+
+\begin{frame}{Data mining technique characteristics (Aleph)}
   \begin{itemize}
-  \item support relational input data
-  \item perform induction
-  \item incorporate reverse machine learning
-  \item probability
+  \item support relational input data \pause 
+    \begin{itemize}
+      \item examples are Prolog facts
+      \item hypothesis is a set of clauses (learning a predicate)
+      \item background knowledge can rely on all Prolog features \pause
+    \end{itemize} 
+  \item perform induction \pause
+    \begin{itemize}
+    \item Progol algorithm \pause
+    \end{itemize}
+  \item incorporate reverse machine learning \pause
+    \begin{itemize}
+      \item using positive and negative examples of the chosen target attribute \pause
+    \end{itemize}
+  \item handle probability \pause
+    \begin{itemize}
+      \item clause evaluation functions rely on frequency counts of the true and false positives
+    \end{itemize}
+
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Data mining approach characteristics}
-  example patient record timeline
+\begin{frame}[fragile]{Aleph usage}
+core vocabulary:
+{\tiny
+\begin{verbatim}
+patient_disorder(Patient_Id, ICD_Uri, DateTime).
+patient_drug(Patient_Id, ATC_Uri, DateTime).
+patient_age_at_date(Patient_Id, DateTime, Age_Interval).
+patient_gender(Patient_Id, Gender).
+patient_birth_date(Patient_Id, Birth_Date).
+patient_death_date(Patient_Id, Death_Date).
+patient_transfer_data(Patient_Id, From_Location, To_Location, DateTime).
+icd_class_in_icd_superclass(ICD_Class, ICD_Superclass).
+atc_uri_in_atc_category(ATC_Uri, ATC_Category).
+\end{verbatim}
+}
+space of legal clauses is constrained using 
+\begin{itemize}
+\item user-defined prune statements
+\item integrity constraints
+\end{itemize}
+acceptable clauses need to
+\begin{itemize}
+  \item cover at least 2 positive examples
+  \item have a precision of at least 60\%
+\end{itemize}
 \end{frame}
-
 
 \begin{frame}{Conclusions}
-  some stuff
+\begin{table}
+  \begin{tabular}{l|l|c|c|c}
+    \multicolumn{2}{c}{}&\multicolumn{2}{c}{Actual example class}&\\
+    \cline{3-4}
+    \multicolumn{2}{c|}{}&Positive&Negative&\multicolumn{1}{c}{Total}\\
+    \cline{2-4}
+    \multirow{2}{*}{Predicted example class}& Positive & $65$ & $1$ & $66$\\
+    \cline{2-4}
+    & Negative & $466$ & $1476$ & $1942$\\
+    \cline{2-4}
+    \multicolumn{1}{c}{} & \multicolumn{1}{c}{Total} & \multicolumn{1}{c}{$531$} & \multicolumn{1}{c}{$1477$} & \multicolumn{1}{c}{$2008$}\\
+  \end{tabular}
+  \caption {confusion matrix for the theory on the BUN$>$60 mg/dl trigger}
+  \label{confusion-matrix-bun}
+\end{table}
+\pause
+\begin{itemize}
+\item Medicines: challenges \pause
+  \begin{itemize}
+  \item limited amount of data
+  \item heterogeneous set of adverse events
+  \item irrelevant correlation \pause
+  \end{itemize}
+\item Readmission within 30 days: challenges \pause
+  \begin{itemize}
+  \item limited domain knowledge
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
+\begin{frame}{Questions}
+\centering
+Thanks for your attention
+\end{frame}
 
 % % \begin{lstlisting}[style=rdf,float, caption={Two rules in N3, one imposes a space:containedBy relation, the other expresses the transitive closure over this relation}, label=rule_example]
 % % @prefix orgStructure: <http://www.example.org/database/ddo/orgStructure#> .
