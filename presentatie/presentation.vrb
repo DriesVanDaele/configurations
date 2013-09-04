@@ -1,25 +1,23 @@
-\frametitle{Aleph usage}
-core vocabulary:
+\frametitle{Data mining approach}
+\begin{minipage}{\textwidth}
+\begin{figure}
+\includegraphics[width=\textwidth,keepaspectratio]{timeline_final2}
+\end{figure}
+  \end{minipage}
+  \vfill
+  \begin{minipage}{\textwidth}
+    \centering
 {\tiny
 \begin{verbatim}
-patient_disorder(Patient_Id, ICD_Uri, DateTime).
-patient_drug(Patient_Id, ATC_Uri, DateTime).
-patient_age_at_date(Patient_Id, DateTime, Age_Interval).
-patient_gender(Patient_Id, Gender).
-patient_birth_date(Patient_Id, Birth_Date).
-patient_death_date(Patient_Id, Death_Date).
-patient_transfer_data(Patient_Id, From_Location, To_Location, DateTime).
-icd_class_in_icd_superclass(ICD_Class, ICD_Superclass).
-atc_uri_in_atc_category(ATC_Uri, ATC_Category).
+patient_gender(patient_1, male).
+patient_birth_date(patient_1, '1965-03-07').
+patient_medical_case_dates(patient_1, medical_case_100, '2007-07-12','2007-07-28').
+patient_disorder(patient_1, 'I20.9', '2007-07-12').
+patient_disorder(patient_1, 'I65.2', '2007-07-12').
+patient_disorder(patient_1, 'K76.9', '2007-07-17').
+patient_disorder(patient_1, 'N18', '2007-07-19').
+patient_drug(patient_1, 'B01AC04', '2007-07-12').
+...
 \end{verbatim}
 }
-space of legal clauses is constrained using
-\begin{itemize}
-\item user-defined prune statements
-\item integrity constraints
-\end{itemize}
-acceptable clauses need to
-\begin{itemize}
-  \item cover at least 2 positive examples
-  \item have a precision of at least 60\%
-\end{itemize}
+\end{minipage}
