@@ -1,0 +1,10 @@
+;; no splash screen
+(setq inhibit-splash-screen t)
+
+;; empty scratch buffer
+(setq initial-scratch-message "")
+
+(eshell)
+
+
+(provide 'module-startscreen)

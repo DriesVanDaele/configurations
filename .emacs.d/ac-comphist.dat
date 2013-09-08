@@ -1,0 +1,224 @@
+((("setq" .
+   [1 0 0 0])
+  ("color-theme-timehonored" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("color-theme-initialize" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("conf" .
+   [1 0 0 0])
+  ("emacs-lisp-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("data" .
+   [1 0 0 0])
+  ("getSumOfAttributeEntropies" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("supportNeg" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("supportPos" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("the" .
+   [1 0 0])
+  ("stat" .
+   [2 0 0 0])
+  ("party" .
+   [6 0 0 0 0])
+  ("rain" .
+   [11 0 0 0])
+  ("Rain" .
+   [1 0 0 0])
+  ("openbox-session" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("cvbcv" .
+   [0 0 1 1 0])
+  ("isBuildingModel" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("isSingleLineInput" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("return" .
+   [4 0 0 0 0 0])
+  ("DenseInstance" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("true" .
+   [1 0 0 0])
+  ("false" .
+   [1 0 0 0 0])
+  ("addTicket" .
+   [1 0 0 0 0 0 0 0 0])
+  ("hold_minimal_hops" .
+   [1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("hold" .
+   [0 0 0 1])
+  ("flights" .
+   [1 0 0 0 0 0 0])
+  ("seatclass" .
+   [1 0 0 0 0 0 0 0 0])
+  ("tickets" .
+   [1 0 0 0 0 0 0])
+  ("new" .
+   [2 0 0])
+  ("Ticket" .
+   [1 0 0 0 0 0])
+  ("flight" .
+   [2 0 0 0 0 0])
+  ("do" .
+   [1 0])
+  ("map" .
+   [1 0 0])
+  ("set-cursor-color" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("date" .
+   [1 0 0 0])
+  ("rsense" .
+   [1 0 0 0 0 0])
+  ("price" .
+   [0 0 1 0 0])
+  ("addTimeToDate" .
+   [1 0 0 2 0 0 0 0 0 0 0 0 0])
+  ("Person" .
+   [1 0 0 0 0 0])
+  ("Struct" .
+   [1 0 0 0 0 0])
+  ("puts" .
+   [2 0 0 0])
+  ("adameus" .
+   [1 0 0 0 0 0 0])
+  ("require" .
+   [4 0 0 0 0 0 0])
+  ("color-theme-solarized-dark" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0])
+  ("color-theme-solarized" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("cd" .
+   [1 0])
+  ("exec" .
+   [3 0 0 0])
+  ("function-item" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("array-mode" .
+   [0 0 1 0 0 0 0 0 0 0])
+  ("probabilities" .
+   [3 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("probabilityOf0Label" .
+   [3 0 0 0 0 0 0 0 0 0 0 1 0 0 2 0 0 0 3])
+  ("push_back" .
+   [1 0 0 0 0 0 0 0 0])
+  ("probabilityOf1Label" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0])
+  ("int" .
+   [7 0 0])
+  ("getLabelProbabilities" .
+   [1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("vector" .
+   [4 0 0 0 0 0])
+  ("ALLTRANSACTIONS" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("labels" .
+   [3 0 0 0 0 0])
+  ("transactions" .
+   [8 0 0 0 0 0 0 0 0 0 0 0])
+  ("COVERED" .
+   [1 0 0 0 0 0 0])
+  ("overallProbabilities" .
+   [1 0 0 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 0])
+  ("coveredProbabilities" .
+   [4 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 0 0 0 0])
+  ("uncoveredEntropy" .
+   [3 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1])
+  ("uncoveredProbabilities" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("overallEntropy" .
+   [2 0 0 0 1 0 0 0 0 0 1 0 0 0])
+  ("coveredEntropy" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("nbOfTransactions" .
+   [4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("support" .
+   [29 0 0 0 0 0 0])
+  ("size" .
+   [5 0 0 0])
+  ("bool" .
+   [1 0 0 0])
+  ("nbOfLabeledTransactions" .
+   [1 0 0 0 0 0 2 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("cerr" .
+   [21 0 0 0])
+  ("nbOfTransactionsLabeled0" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 2])
+  ("endl" .
+   [16 0 0 0])
+  ("nbOfTransactionsLabeled1" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("label" .
+   [2 0 0 0 0])
+  ("if" .
+   [6 0])
+  ("double" .
+   [18 0 0 0 0 0])
+  ("else" .
+   [2 0 0 0])
+  ("p0" .
+   [3 0])
+  ("p1" .
+   [4 0])
+  ("log2" .
+   [1 0 0 0])
+  ("covered" .
+   [2 0 0 0 0 0 0])
+  ("nbOfTransactionsLabeled" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("typeOfTransaction" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("prob0" .
+   [0 0 0 0 1])
+  ("statMyRegression" .
+   [1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("propagateMyRegression" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("costs" .
+   [12 0 0 0 0])
+  ("speedbar" .
+   [1 0 0 0 0 0 0 0])
+  ("buffer" .
+   [1 0 0 0 0 0])
+  ("totPos" .
+   [7 0 0 0 0 0])
+  ("totNeg" .
+   [6 0 0 0 0 0])
+  ("t" .
+   [1])
+  ("alias" .
+   [2 0 0 0 0])
+  ("in" .
+   [1 0])
+  ("heb." .
+   [0 0 0 1])
+  ("niet" .
+   [2 0 0 0])
+  ("kunnen" .
+   [1 0 0 0 0 0])
+  ("add-to-list" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("load" .
+   [1 0 0 0])
+  ("load-path" .
+   [1 0 0 0 0 0 0 0 0])
+  ("zip" .
+   [1 0 0])
+  ("setf" .
+   [1 0 0 0])
+  ("is" .
+   [2 0])
+  ("lst" .
+   [2 0 0])
+  ("eval" .
+   [2 0 0 0])
+  ("variable" .
+   [1 0 0 0 0 0 0 0])
+  ("definition" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("mij" .
+   [1 0 0])
+  ("and" .
+   [2 0 0])
+  ("lambda" .
+   [1 0 0 0 0 0])))

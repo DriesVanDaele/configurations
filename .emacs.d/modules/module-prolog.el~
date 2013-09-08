@@ -1,0 +1,8 @@
+;; Prolog-mode
+(add-to-list 'load-path "~/.emacs.d/")
+           (require 'prolog)
+(setq auto-mode-alist
+  (cons (cons "\\.pl" 'prolog-mode)
+     auto-mode-alist))
+
+(provide 'module-prolog)

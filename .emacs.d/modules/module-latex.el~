@@ -1,0 +1,45 @@
+;;;; compile documents to PDF by default
+;; (setq TeX-PDF-mode t)
+
+;; (eval-after-load "tex"
+;;   '(progn
+;;      (add-to-list 'TeX-expand-list
+;;                   '("%(RubberPDF)"
+;;                     (lambda ()
+;;                       (if
+;;                           (not TeX-PDF-mode)
+;;                           ""
+;;                         "--pdf"))))
+;;      (add-to-list 'TeX-command-list
+;;                 '("Rubber" "rubber %(RubberPDF) %t" TeX-run-shell nil t) t)))
+
+;; (add-hook 'TeX-mode-hook
+;;           '(lambda ()
+;;             (define-key TeX-mode-map (kbd "<f9>")
+;;               (lambda ()
+;;                 (interactive)
+;;                 (save-buffer)
+;;                 (TeX-command-menu "Rubber")
+;;                 (TeX-clean)))
+;;             (define-key TeX-mode-map (kbd "<f12>")
+;;               (lambda ()
+;;                 (interactive)
+;;                 (TeX-view)
+;;                 [return]))))
+
+
+(setq TeX-PDF-mode t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+;;(setq-default TeX-master nil)
+
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+
+
+
+(provide 'module-latex)
