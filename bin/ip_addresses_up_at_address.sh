@@ -5,7 +5,7 @@ else address_prefix=$1;
 fi;
 
 var=$( for ip in $(seq 1 254); do 
-           /home/dries/bin/is_ip_address_up.sh $address_prefix.$ip&
+           is_ip_address_up.sh $address_prefix.$ip&
        done);
 
 echo "$var" | grep "up" | sort --version-sort;

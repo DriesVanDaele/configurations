@@ -1,4 +1,0 @@
-configurations
-==============
-
-Configuration files
