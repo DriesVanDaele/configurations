@@ -12,7 +12,7 @@ import XMonad.Actions.MouseGestures
 import qualified XMonad.StackSet as SS
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Grid
-import XMonad.Layout.NoBorders (smartBorders)
+-- import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.PerWorkspace ( onWorkspace
                                   , PerWorkspace
                                   )
@@ -37,50 +37,23 @@ baseColor = "#000000"
 browser :: String
 browser = "chromium"
 
-decreaseBrightness :: String
-decreaseBrightness =  "/home/dries/bin/brightness.sh -"
-
-decreaseVolume :: String
-decreaseVolume = "amixer -c 0 set Master 3dB-"
-
 font :: String
 font = "xft:Ubuntu Mono-B:pixelsize=15"
 
 frillColor :: String
 frillColor = "#DC6741"
 
-googleDocs :: String
-googleDocs = browser ++ " https://docs.google.com"
-
-increaseBrightness :: String
-increaseBrightness =  "/home/dries/bin/brightness.sh +"
-
-increaseVolume :: String
-increaseVolume = "amixer -c 0 set Master 3dB+"
-
 myTerminal :: String
 myTerminal = "urxvt"
 
-shutdown :: String
-shutdown = "sudo shutdown -hP now"
-
 songPlayer :: String
 songPlayer = "/home/dries/bin/playSong.sh"
-
-toggleMute :: String
-toggleMute = "/home/dries/bin/toggleMute.sh"
-
-toledo :: String
-toledo = browser ++ " https://cygnus.cc.kuleuven.be/webapps/asso-toledo-bb_bb60/nosession/login.jsp?config=a"
 
 unfocusedBorderColor :: String
 unfocusedBorderColor = "gray"
 
 volumeSetter :: String
 volumeSetter = "/home/dries/bin/setMPDVolume.sh"
-
-weather :: String
-weather = browser ++ " http://www.weatherlink.com/user/beisbroek/index.php?view=main&headers=0"
 
 modm :: KeyMask
 modm = mod4Mask
@@ -90,9 +63,6 @@ myBorderWidth = 3
  
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
-
-powerButton :: KeySym
-powerButton = xF86XK_PowerOff
 
 azertyKeys :: XConfig l -> M.Map (KeyMask, KeySym) (X ())
 azertyKeys conf@(XConfig { }) = M.fromList $
@@ -111,31 +81,11 @@ gridColorizer _ False = return (baseColor, "white")
 
 myKeys :: [((KeyMask, KeySym), X ())]
 myKeys = 
-    [ ((modm,               xK_Down                 ), spawn decreaseVolume)    
-    , ((modm,               xK_Up                   ), spawn increaseVolume)
-    , ((0,                  0x1008ff11              ), spawn decreaseVolume)    
-    , ((0,                  0x1008ff13              ), spawn increaseVolume)
-    , ((0,               xF86XK_MonBrightnessUp), spawn "sudo /home/dries/bin/brightness_up.sh")
-    , ((0,               xF86XK_MonBrightnessDown), spawn "sudo /home/dries/bin/brightness_down.sh")
-    -- , ((0,                  xF86XK_MonBrightnessDown), spawn decreaseBrightness)
-    -- , ((0,                  xF86XK_MonBrightnessUp  ), spawn increaseBrightness)
-    , ((0,                  xF86XK_AudioMute        ), spawn toggleMute)
-    , ((0,                  xF86XK_HomePage         ), spawn browser)
-    , ((0,                  powerButton             ), spawn shutdown) 
-    , ((modm,               xK_Return               ), sendMessage $ JumpToLayout "Full")   
-    , ((modm,               xK_F2                   ), spawn "emacs")  
-    , ((modm,               xK_F3                   ), spawn "sylpheed")
-    , ((modm,               xK_F4                   ), spawn "urxvt -title weechat-curses -e weechat-curses")    -- launch weechat-curses
-    , ((modm,               xK_F5                   ), spawn browser)    
-    , ((modm,               xK_F6                   ), spawn toledo)    
-    , ((modm,               xK_F7                   ), spawn googleDocs)
-    , ((modm,               xK_F12                  ), spawn weather)  
-    , ((0,                  xK_Print                ), spawn "import -window root -quality 100 screenshot.jpg")-- print screen
+    [ ((modm,               xK_Return               ), sendMessage $ JumpToLayout "Full")   
     , ((0,                  xF86XK_AudioPlay        ), spawn "mpc toggle")
     , ((0,                  xF86XK_AudioPrev        ), spawn "mpc prev")
     , ((0,                  xF86XK_AudioNext        ), spawn "mpc next")
     , ((0,                  xF86XK_AudioStop        ), spawn "mpc stop")
-    , ((modm,               xF86XK_AudioMute        ), spawn toggleMute)
     , ((modm,               xK_a                    ), spawn "mpc play")    -- start  
     , ((modm,               xK_z                    ), spawn "mpc stop")    -- stop
     , ((modm .|. shiftMask, xK_t                    ), spawn "mpc toggle")  --toggle
@@ -144,8 +94,6 @@ myKeys =
     , ((modm .|. shiftMask, xK_a                    ), spawn "mpc seek 0")  -- return to beginning of song
     , ((modm,               xK_p                    ), songPrompt)
     , ((modm,               xK_s                    ), goToSelected defaultGSConfig { gs_navigate = myNavigation })
-    -- don't use if caps lock standard behaviour isn't disabled in .xinitrc
-    --, ((0,                  xK_Meta_L               ), goToSelected defaultGSConfig { gs_navigate = myNavigation })
     , ((modm,               xK_Menu                 ), menu personalizedGSConfig) -- 0 instead of modm
     ]
 
@@ -177,19 +125,17 @@ menuItems = [ ("internet"   , spawn browser)
             , ("processes"  , spawn "urxvt -title top -e top")  
             , ("music"      , spawn "urxvt -title ncmpcpp -e ncmpcpp")
             , ("chat"       , spawn "urxvt -title weechat-curses -e weechat-curses")  
-            , ("mail"       , spawn "sylpheed")  
-            , ("weather"    , spawn weather)
-            , ("google docs", spawn googleDocs)
+            , ("mail"       , spawn "thunderbird")  
             ]
 
 musicItems :: [(String, X ())]
 musicItems = [ ("play"   , spawn "mpc play")
-               , ("stop"     , spawn "mpc stop")
-               , ("next song"      , spawn "mpc next")
-               , ("toggle"      , spawn "mpc toggle")
-               , ("previous song"  , spawn "mpc prev")  
-               , ("choose song", songList)
-               ]
+             , ("stop"     , spawn "mpc stop")
+             , ("next song"      , spawn "mpc next")
+             , ("toggle"      , spawn "mpc toggle")
+             , ("previous song"  , spawn "mpc prev")  
+             , ("choose song", songList)
+             ]
 
 songList :: X ()
 songList = runProcessWithInput "mpc" ["-f","%title%","playlist"] "" >>= 
@@ -248,16 +194,18 @@ main = xmonad $ defaultConfig { keys = \c -> azertyKeys c `M.union` keys default
                         } `additionalKeys`myKeys
                
 myManageHook :: Query (Endo WindowSet)
-myManageHook = composeAll [ title     =? "ncmpcpp"  --> doShift "0:Music"
-                          , title     =? myTerminal --> doShift "1:Terminal"
-                          , className =? "Emacs"    --> doShift "2:Programming"
-                          , className =? "MPlayer"  --> doShift "3:Video"
-                          , title     =? "weechat-curses"    --> doShift "4:Chat" 
-                          , className =? "Chromium" --> doShift "5:Web"
-                          , className =? "Sylpheed" --> doShift "6:Mail"
-                          , className =? "Zathura"  --> doShift "7:Documents"
-                          , className =? "Evince"  --> doShift "7:Documents"
-                          , className =? "feh"      --> doShift "8:Pictures"
+myManageHook = composeAll [ title     =? "ncmpcpp"        --> doShift "0:Music"
+                          , title     =? myTerminal       --> doShift "1:Terminal"
+                          , title     =? "eshell"         --> doShift "1:Terminal"
+                          , className =? "Emacs"          --> doShift "2:Programming"
+                          , className =? "MPlayer"        --> doShift "3:Video"
+                          , title     =? "weechat-curses" --> doShift "4:Chat" 
+                          , className =? "Chromium"       --> doShift "5:Web"
+                          , className =? "Thunderbird"    --> doShift "6:Mail"
+                          , className =? "Zathura"        --> doShift "7:Documents"
+                          , className =? "Evince"         --> doShift "7:Documents"
+                          , className =? "llpp"           --> doShift "7:Documents"
+                          , className =? "feh"            --> doShift "8:Pictures"
                           ]
                <+> manageDocks
 
@@ -277,5 +225,4 @@ myMouseBindings ( XConfig { } ) = M.fromList
             , ([R], \_ -> runSelectedAction personalizedGSConfig musicItems)
             , ([U], \_ -> menu personalizedGSConfig)
             , ([D], \_ -> kill)
-            , ([R,D,L,U,D,R,U,L], \_ -> spawn shutdown)
             ]
