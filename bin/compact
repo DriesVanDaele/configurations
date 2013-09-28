@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 PASSED=$@;
 
 if [[ -d $PASSED ]] || [ "$#" -gt 1 ]; then

@@ -24,7 +24,7 @@
     swiProlog
     yap
     htop
-    mpc
+    #mpc
     mpd
     mplayer
     darcs

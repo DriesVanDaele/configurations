@@ -27,7 +27,7 @@ import qualified Data.Map as M ( Map
 import qualified XMonad.StackSet as W ( greedyView
                                       , shift
                                       )
-import Graphics.X11.ExtraTypes.XF86
+--import Graphics.X11.ExtraTypes.XF86
 import Data.Char (isDigit)
 import XMonad.Util.Run (safeSpawn)
 
@@ -82,16 +82,6 @@ gridColorizer _ False = return (baseColor, "white")
 myKeys :: [((KeyMask, KeySym), X ())]
 myKeys = 
     [ ((modm,               xK_Return               ), sendMessage $ JumpToLayout "Full")   
-    , ((0,                  xF86XK_AudioPlay        ), spawn "mpc toggle")
-    , ((0,                  xF86XK_AudioPrev        ), spawn "mpc prev")
-    , ((0,                  xF86XK_AudioNext        ), spawn "mpc next")
-    , ((0,                  xF86XK_AudioStop        ), spawn "mpc stop")
-    , ((modm,               xK_a                    ), spawn "mpc play")    -- start  
-    , ((modm,               xK_z                    ), spawn "mpc stop")    -- stop
-    , ((modm .|. shiftMask, xK_t                    ), spawn "mpc toggle")  --toggle
-    , ((modm,               xK_f                    ), spawn "mpc next")    -- next
-    , ((modm,               xK_b                    ), spawn "mpc prev")    -- prev
-    , ((modm .|. shiftMask, xK_a                    ), spawn "mpc seek 0")  -- return to beginning of song
     , ((modm,               xK_p                    ), songPrompt)
     , ((modm,               xK_s                    ), goToSelected defaultGSConfig { gs_navigate = myNavigation })
     , ((modm,               xK_Menu                 ), menu personalizedGSConfig) -- 0 instead of modm
@@ -125,7 +115,7 @@ menuItems = [ ("internet"   , spawn browser)
             , ("processes"  , spawn "urxvt -title top -e top")  
             , ("music"      , spawn "urxvt -title ncmpcpp -e ncmpcpp")
             , ("chat"       , spawn "urxvt -title weechat-curses -e weechat-curses")  
-            , ("mail"       , spawn "thunderbird")  
+            , ("mail"       , spawn "mutt")  
             ]
 
 musicItems :: [(String, X ())]
@@ -201,10 +191,11 @@ myManageHook = composeAll [ title     =? "ncmpcpp"        --> doShift "0:Music"
                           , className =? "MPlayer"        --> doShift "3:Video"
                           , title     =? "weechat-curses" --> doShift "4:Chat" 
                           , className =? "Chromium"       --> doShift "5:Web"
-                          , className =? "Thunderbird"    --> doShift "6:Mail"
+                          , title     =? "mutt"           --> doShift "6:Mail"
                           , className =? "Zathura"        --> doShift "7:Documents"
                           , className =? "Evince"         --> doShift "7:Documents"
                           , className =? "llpp"           --> doShift "7:Documents"
+                          , className =? "MuPDF"          --> doShift "7:Documents"
                           , className =? "feh"            --> doShift "8:Pictures"
                           ]
                <+> manageDocks
