@@ -1,0 +1,6 @@
+ii -s irc.freenode.net -p 6667 -n  Algorith -k password_here&
+sleep 10;
+echo "/j #haskell" > /home/dries/irc/irc.freenode.net/in;
+echo "/j ##prolog" > /home/dries/irc/irc.freenode.net/in;
+echo "/j #nixos" > /home/dries/irc/irc.freenode.net/in;
+

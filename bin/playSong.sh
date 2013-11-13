@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ## Shortcut to search, add, and play a song (after clearing current playlist).
 ## Use -a (for "add") to add the song to the playlist without clearing current playlist.
  

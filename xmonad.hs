@@ -9,15 +9,14 @@ import XMonad.Actions.UpdatePointer ( updatePointer
                                     )
 import XMonad.Hooks.SetWMName
 import XMonad.Actions.MouseGestures
-import qualified XMonad.StackSet as SS
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Grid
--- import XMonad.Layout.NoBorders (smartBorders)
+import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.PerWorkspace ( onWorkspace
                                   , PerWorkspace
                                   )
 import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.Run (runProcessWithInput)
+import XMonad.Util.Run (runProcessWithInput, safeSpawn)
 import Data.Monoid (Endo)
 import System.IO ()
 import qualified Data.Map as M ( Map
@@ -29,13 +28,10 @@ import qualified XMonad.StackSet as W ( greedyView
                                       )
 --import Graphics.X11.ExtraTypes.XF86
 import Data.Char (isDigit)
-import XMonad.Util.Run (safeSpawn)
+
 
 baseColor :: String
 baseColor = "#000000"
-
-browser :: String
-browser = "chromium"
 
 font :: String
 font = "xft:Ubuntu Mono-B:pixelsize=15"
@@ -73,7 +69,7 @@ azertyKeys conf@(XConfig { }) = M.fromList $
           (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 myWorkspaces :: [String]
-myWorkspaces = ["1:Terminal","2:Programming","3:Video","4:Chat","5:Web","6:Mail","7:Documents","8:Pictures","9","0:Music"]
+myWorkspaces = ["1:Terminal","2:Programming","3:Video","4:Chat","5:Web","6:Mail","7:Documents","8:Pictures","9:System","0:Music"]
 
 gridColorizer :: a -> Bool -> X (String, String)
 gridColorizer _ True = return (frillColor, "white")
@@ -83,8 +79,6 @@ myKeys :: [((KeyMask, KeySym), X ())]
 myKeys = 
     [ ((modm,               xK_Return               ), sendMessage $ JumpToLayout "Full")   
     , ((modm,               xK_p                    ), songPrompt)
-    , ((modm,               xK_s                    ), goToSelected defaultGSConfig { gs_navigate = myNavigation })
-    , ((modm,               xK_Menu                 ), menu personalizedGSConfig) -- 0 instead of modm
     ]
 
 songPrompt :: X ()
@@ -103,20 +97,6 @@ playSong song = safeSpawn songPlayer [song]
 
 setVolume :: String -> X ()
 setVolume volume = spawn (volumeSetter ++ " " ++ volume)
-
-menu :: GSConfig (X ()) -> X ()
-menu configuration = runProcessWithInput "date" ["+%a %d %b %H:%M"] "" >>= 
-                     (\ xs -> runSelectedAction configuration ((init xs, spawn ""):menuItems))
-
-menuItems :: [(String, X ())]
-menuItems = [ ("internet"   , spawn browser)
-            , ("scheme"     , spawn "drracket")
-            , ("emacs"      , spawn "emacs")
-            , ("processes"  , spawn "urxvt -title top -e top")  
-            , ("music"      , spawn "urxvt -title ncmpcpp -e ncmpcpp")
-            , ("chat"       , spawn "urxvt -title weechat-curses -e weechat-curses")  
-            , ("mail"       , spawn "mutt")  
-            ]
 
 musicItems :: [(String, X ())]
 musicItems = [ ("play"   , spawn "mpc play")
@@ -172,13 +152,13 @@ main = xmonad $ defaultConfig { keys = \c -> azertyKeys c `M.union` keys default
                         { modMask            = modm
                         , logHook            = updatePointer (Relative 0.95 0.95)
                         , manageHook         = myManageHook
-                        , layoutHook         = {- smartBorders $ -} avoidStruts myLayout
+                        , layoutHook         = smartBorders $ avoidStruts myLayout
                         , terminal           = myTerminal
                         , normalBorderColor  = unfocusedBorderColor
                         , focusedBorderColor = frillColor
                         , startupHook        = setWMName "LG3D"
                         , workspaces         = myWorkspaces
-                        , mouseBindings      = myMouseBindings         
+--                        , mouseBindings      = myMouseBindings         
                         , focusFollowsMouse  = myFocusFollowsMouse
                         , borderWidth        = myBorderWidth
                         } `additionalKeys`myKeys
@@ -191,29 +171,13 @@ myManageHook = composeAll [ title     =? "ncmpcpp"        --> doShift "0:Music"
                           , className =? "MPlayer"        --> doShift "3:Video"
                           , title     =? "weechat-curses" --> doShift "4:Chat" 
                           , className =? "Chromium"       --> doShift "5:Web"
+                          , className =? ".dwb-wrapped"       --> doShift "5:Web"
                           , title     =? "mutt"           --> doShift "6:Mail"
                           , className =? "Zathura"        --> doShift "7:Documents"
                           , className =? "Evince"         --> doShift "7:Documents"
                           , className =? "llpp"           --> doShift "7:Documents"
                           , className =? "MuPDF"          --> doShift "7:Documents"
                           , className =? "feh"            --> doShift "8:Pictures"
+                          , title     =? "htop"           --> doShift "9:System"
                           ]
                <+> manageDocks
-
-myMouseBindings :: XConfig t -> M.Map (KeyMask, Button) (Window -> X ())
-myMouseBindings ( XConfig { } ) = M.fromList
-     [ ((modm, button1), floatMoveWindow)
-     , ((0, button2), mouseGesture gestures) -- 0 instead of modm
-     , ((modm, button3), floatResizeWindow)
-     ]
-    where
-        floatMoveWindow = apply mouseMoveWindow
-        floatResizeWindow = apply mouseResizeWindow
-        apply modifyWindow w = focus w >> modifyWindow w >> windows SS.shiftMaster
-        gestures = M.fromList
-            [ ([],  \_ -> goToSelected defaultGSConfig { gs_navigate = myNavigation })
-            , ([L], \_ -> spawn myTerminal)
-            , ([R], \_ -> runSelectedAction personalizedGSConfig musicItems)
-            , ([U], \_ -> menu personalizedGSConfig)
-            , ([D], \_ -> kill)
-            ]
