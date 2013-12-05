@@ -1,0 +1,85 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/../Applications/App Store.app/" . "Contents/")
+ ("/../Applications/" . "App Store.app/")
+ ("/../" . "Applications/")
+ ("/Users/driesvd/Library/" . "Keyboard Layouts/")
+ ("/Users/" . "driesvd/")
+ ("/System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/Contents/" . "Resources/")
+ ("/System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/" . "Contents/")
+ ("/System/Library/Keyboard Layouts/" . "AppleKeyboardLayouts.bundle/")
+ ("/System/Library/" . "Keyboard Layouts/")
+ ("/" . "System/")
+ ("/Users/driesvd/" . ".mutt/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/driesvd/.emacs.d/"
+ "/Users/driesvd/"
+ "/Users/driesvd/.mutt/"
+ "/Users/driesvd/.emacs.d/modules/"
+ "/../Applications/App Store.app/Contents/"
+ "/Users/driesvd/Library/Keyboard Layouts/"
+ "/System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/Contents/Resources/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ "project_13.tex"
+ ".bash_profile"
+ "account.kuleuven.staff"
+ "module-modeline.el"
+ "Info.plist"
+ "Belgian (Non-Apple).keylayout"
+ "AppleKeyboardLayouts-L.dat"
+ ".mailcap"
+ "view_attachment.sh"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/driesvd/Downloads/" (21148 24441 0 0) "VirtualBox-4.3.4-91027-OSX.dmg" "VirtualBox-4.3.4-91027-OSX-2.dmg" "VirtualBox-4.3.2-90405-OSX.dmg" "TeachYourselfLogic9-3.pdf" "project_13.tex~" "project_13.tex" "problog2/" "nixos-minimal-13.10.35457.ad14dea-x86_64-linux.iso" "NamenAI_2013-2014.xlsx" "NamenAI_2013-2014-3.xlsx" "NamenAI_2013-2014-2.xlsx" "MacTeX.pkg" "ESLII_print10.pdf" "auto/" ".localized" ".DS_Store" "../" "./")
+
+ ("/Users/driesvd/.emacs.d/" (21148 19958 0 0) "wombat-theme.el~" "wombat-theme.el" "url/" "tramp" "plugins/" "monokai-theme.el" "modules.el~" "modules.el" "modules/" "init.el~" "init.el" "image-dired/" "ido.last~" "ido.last" "eshell/" "elpa/" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" "%backup%~" "../" "./")
+
+ ("/Users/driesvd/" (21148 18838 0 0) "VirtualBox VMs/" "sinterklaas_mail.pdf" "repository" "Public/" "project_13.tex" "Pictures/" "Music/" "Movies/" "Mail/" "Library/" "irc/" "Downloads/" "Documents/" "Desktop/" "bin/" ".w3m/" ".Trash/" ".tmux.conf~" ".tmux.conf" ".tmp/" ".swipl-dir-history/" ".subversion/" ".ssh/" ".offlineimaprc.telenet" ".offlineimaprc" ".offlineimap/" ".muttrc" ".mutt/" ".mailcap~" ".mailcap" ".lesshst" ".htoprc" ".ghc/" ".emacs.d/" ".DS_Store" ".darcs/" ".cups/" ".CFUserTextEncoding" ".cabal/" ".bashrc" ".bash_profile~" ".bash_profile" ".bash_history" "#.tmux.conf#" "../" "./")
+
+ ("/Users/driesvd/.cabal/" (21143 31370 0 0) "world" "share/" "packages/" "logs/" "lib/" "config" "bin/" "../" "./")
+
+ ("/Users/driesvd/.mutt/" (21139 3651 0 0) "view_attachment.sh~" "view_attachment.sh" "mailcap~" "mailboxes" "colors.nice" "colors" "certificates" "cache/" "account.telenet~" "account.telenet" "account.kuleuven~" "account.kuleuven.student" "account.kuleuven.staff" "../" "./")
+
+ ("/Users/driesvd/.emacs.d/modules/" (21130 5134 0 0) "module-text.el~" "module-text.el" "module-startscreen.el~" "module-startscreen.el" "module-semanticweb~" "module-semanticweb.el" "module-prolog.el~" "module-prolog.el" "module-packages.el" "module-modeline.el~" "module-modeline.el" "module-latex.el~" "module-latex.el" "module-icicles.el~" "module-icicles.el" "module-hippie.el~" "module-hippie.el" "module-haskell.el~" "module-haskell.el" "module-eshellprompt.el~" "module-eshellconfigurations.el~" "module-eshellconfigurations.el" "module-eclipse.el~" "module-eclipse.el" "module-appearance.el~" "module-appearance.el" "module-all.el" "../" "./")
+
+ ("/../Applications/App Store.app/Contents/" (21123 47750 0 0) "version.plist" "Resources/" "PlugIns/" "PkgInfo" "MacOS/" "Info.plist" "_CodeSignature/" "../" "./")
+
+ ("/../Applications/App Store.app/" (20881 7291 0 0) "Contents/" "../" "./")
+
+ ("/../Applications/" (21141 59202 0 0) "Xcode.app/" "Utilities/" "Time Machine.app/" "TextEdit.app/" "System Preferences.app/" "Stickies.app/" "Safari.app/" "Reminders.app/" "QuickTime Player.app/" "Preview.app/" "Photo Booth.app/" "Notes.app/" "Mission Control.app/" "Messages.app/" "Maps.app/" "Mail.app/" "LibreOffice.app/" "Launchpad.app/" "iTunes.app/" "iPhoto.app/" "iMovie.app/" "iMovie 9.0.8/" "Image Capture.app/" "iBooks.app/" "GarageBand.app/" "Game Center.app/" "Font Book.app/" "FaceTime.app/" "Emacs.app/" "DVD Player.app/" "Dictionary.app/" "Dashboard.app/" "Contacts.app/" "Chess.app/" "Calendar.app/" "Calculator.app/" "Automator.app/" "App Store.app/" ".localized" ".DS_Store" "../" "./")
+
+ ("/../" (21124 51691 0 0) "Volumes/" "var/" "usr/" "Users/" "User Information/" "tmp/" "System/" "sbin/" "private/" "Network/" "net/" "mach_kernel" "Library/" "home/" "etc/" "dev/" "cores/" "bin/" "Applications/" ".vol/" ".Trashes/" ".Spotlight-V100/" ".PKInstallSandboxManager/" ".hotfiles.btree" ".fseventsd/" ".file" ".DS_Store" ".DocumentRevisions-V100/" "../" "./")
+
+ ("/Users/driesvd/Library/Keyboard Layouts/" (21124 59454 0 0) "Belgian (Non-Apple).keylayout~" "Belgian (Non-Apple).keylayout" "../" "./")
+
+ ("/Users/driesvd/Library/" (21141 52442 0 0) "WebKit/" "Voices/" "SyncedPreferences/" "Spelling/" "Sounds/" "Services/" "Screen Savers/" "Saved Application State/" "Safari/" "PubSub/" "Printers/" "Preferences/" "PreferencePanes/" "Metadata/" "Messages/" "Mail/" "Logs/" "LaunchAgents/" "Keychains/" "Keyboard Layouts/" "Internet Plug-Ins/" "Input Methods/" "iMovie/" "IdentityServices/" "Group Containers/" "Google/" "GameKit/" "Fonts/" "FontCollections/" "Favorites/" "Dictionaries/" "Developer/" "Cookies/" "Containers/" "Compositions/" "Colors/" "ColorPickers/" "Calendars/" "Caches/" "Autosave Information/" "Audio/" "Assistants/" "Application Support/" "Accounts/" ".localized" "../" "./")
+
+ ("/System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/Contents/Resources/" (21123 47506 0 0) "zh_TW.lproj/" "zh_CN.lproj/" "vi.lproj/" "uk.lproj/" "tr.lproj/" "th.lproj/" "sv.lproj/" "Spanish.lproj/" "sk.lproj/" "ru.lproj/" "ro.lproj/" "pt_PT.lproj/" "pt.lproj/" "pl.lproj/" "no.lproj/" "ms.lproj/" "ko.lproj/" "Japanese.lproj/" "Italian.lproj/" "id.lproj/" "hu.lproj/" "hr.lproj/" "he.lproj/" "German.lproj/" "French.lproj/" "fi.lproj/" "English.lproj/" "el.lproj/" "Dutch.lproj/" "da.lproj/" "cs.lproj/" "ca.lproj/" "ar.lproj/" "AppleKeyboardLayouts-L.dat" "../" "./")
+
+ ("/System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/Contents/" (21123 47506 0 0) "version.plist" "Resources/" "Info.plist" "_CodeSignature/" "../" "./")
+
+ ("/System/Library/Keyboard Layouts/AppleKeyboardLayouts.bundle/" (21017 37030 0 0) "Contents/" "../" "./")
+
+ ("/System/Library/Keyboard Layouts/" (21017 37025 0 0) "AppleKeyboardLayouts.bundle/" "../" "./")
+
+ ("/System/Library/" (21123 48242 0 0) "WidgetResources/" "Video/" "UserEventPlugins/" "User Template/" "TextEncodings/" "Tcl/" "SystemProfiler/" "SystemConfiguration/" "SyncServices/" "StartupItems/" "Spotlight/" "Spelling/" "Speech/" "Sounds/" "Services/" "Security/" "SDKSettingsPlist/" "ScriptingDefinitions/" "ScriptingAdditions/" "ScreenReader/" "Screen Savers/" "Sandbox/" "Recents/" "QuickTimeJava/" "QuickTime/" "QuickLook/" "PrivateFrameworks/" "Printers/" "PreferencePanes/" "Perl/" "PerformanceMetrics/" "Password Server Filters/" "OpenSSL/" "OpenDirectory/" "MonitorPanels/" "Metadata/" "Messages/" "LoginPlugins/" "LocationBundles/" "LinguisticData/" "LaunchDaemons/" "LaunchAgents/" "Keychains/" "Keyboard Layouts/" "KerberosPlugins/" "Java/" "InternetAccounts/" "Input Methods/" "Image Capture/" "IdentityServices/" "Graphics/" "Frameworks/" "Fonts/" "Filters/" "Filesystems/" "Extensions/" "DTDs/" "Displays/" "DirectoryServices/" "CoreServices/" "Compositions/" "Components/" "ColorSync/" "Colors/" "ColorPickers/" "Caches/" "BridgeSupport/" "Automator/" "Assistant/" "Address Book Plug-Ins/" "Accounts/" "Accessibility/" ".localized" "../" "./")
+
+ ("/System/" (21123 48002 0 0) "Library/" ".localized" "../" "./")
+
+ ("/Users/" (21123 48375 0 0) "Shared/" "driesvd/" ".localized" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

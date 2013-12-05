@@ -1,0 +1,207 @@
+l
+ls
+l s-a
+ls -a
+cd
+ls
+cd Desktop/
+ls
+ls
+cd
+ls
+ls
+ls
+swipl
+swipl
+ghci
+mv /Volumes/SYSRESC/hippie-exp-ext-* .emacs.d/elpa/
+ls
+open project_13.pdf 
+mv project_13.pdf  Documents/Doctoraat/didactic_tasks/danny/practicum_artificiele_intelligentie/project_13.pdf 
+ls
+ls
+cd
+ls
+cd Documents/
+ls
+cd Doctoraat/
+ls
+cd
+cd Movies/
+ls
+ls -a
+cd .loc
+cd
+ls
+cd Downloads/
+ls
+cd
+cd DOwn
+cd Downloads/
+diff project_13.pdf  ~/Documents/Doctoraat/didactic_tasks//danny/practicum_artificiele_intelligentie/project_13.pdf 
+file project_13.pdf
+stat project_13.pdf
+stat   ~/Documents/Doctoraat/didactic_tasks//danny/practicum_artificiele_intelligentie/project_13.pdf 
+stat project_13.pdf
+rm project_13.pdf
+ls
+cd
+ls
+cd Downloads/
+ls
+cd
+cd Documents/
+ls
+yap
+yap
+Yap
+swipl
+ls
+echo $PATH
+ls
+echo $PATH
+yap
+cd /usr/local/bin/
+ls
+swipl
+ghci
+yap
+yap
+/usr/local/bin/yap 
+echo $PATH
+yap
+which yap
+cd /usr/local/bin/
+ls
+readlink yap
+readlink swipl
+readlink ghci
+yap
+cd
+yap
+yap
+which yap
+cd /usr/local/bin/
+ls
+cd
+ls
+which yap
+yap
+swipl
+cd /usr/local/bin/
+ls
+cd
+ls
+yap
+echo $PATH
+echo $PATH
+yap
+cd /usr/local/
+cd
+yap
+cd Downloads/
+yap
+cd
+cd /
+yap
+cd usr/
+yap
+echo $PATH
+yap
+/usr/local/bin/yap 
+yap
+l
+echo $PATH
+c
+dcd
+cd
+swipl
+yap
+swipl
+cd
+swipl
+cd Documents/
+cd
+echo $PATH
+swipl
+cd 
+cd
+cd
+cd
+yap
+swipl
+swipl
+swipl
+yap
+swipl
+cd /
+cd
+swipl
+cd /usr/local/
+cd
+swipl
+yap
+echo $PATH
+yap
+cd /usr/local/
+cd
+yap
+echo $PATH
+yap
+echo $PATH
+yap
+echo $PATH
+swipl
+cd /usr/local/
+cd
+yap
+yap
+yap
+yap
+echo $PATH
+PATH=PATH:/usr/local/bin
+set PATH=PATH:/usr/local/bin
+PATH = $PATH:/usr/local/bin
+set env
+/usr/local/bin/swipl
+yap
+echo $PATH
+swipl
+cd /usr/
+ls
+swipl
+cd
+swipl
+pwd
+pwd
+wipl
+swipl
+cd /
+ls
+swipl
+cd usr/
+ls
+swipl
+echo $PATH
+echo $PATH
+yap
+cd /usr/
+cd
+yap
+pwd
+ls
+echo PATH
+echo $PATH
+cd /usr/local/bin/swipl
+/usr/local/bin/swipl
+ls
+ls -a
+rm homebrew_programs 
+ls
+echo $PATH
+yap
+echo $PATH
+cd /usr/
+cd
+swipl
+yap

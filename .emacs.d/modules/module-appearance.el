@@ -14,8 +14,10 @@
 (scroll-bar-mode -1)
 
 ;; use font Consolas
-(add-to-list 'default-frame-alist '(font . "Consolas"))
-
+;; (add-to-list 'default-frame-alist '(font . "Consolas"))
+(if (eq system-type 'darwin)
+  (set-default-font "-*-Andale Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  (set-default-font "Ubuntu Mono-14"))
 ;; Inconsolata 12
 ;; Consolas
 ;; Ubuntu Mono-12

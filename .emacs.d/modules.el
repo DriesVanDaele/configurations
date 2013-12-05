@@ -11,3 +11,5 @@
 (require 'module-semanticweb)
 (require 'module-packages)
 (require 'module-all)
+(require 'module-hippie)
+(require 'module-elget)
